@@ -23,4 +23,14 @@
     <servlet-name>SearchController</servlet-name>
     <url-pattern>/SearchController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ControllerYoutube</display-name>
+    <servlet-name>ControllerYoutube</servlet-name>
+    <servlet-class>aiss.controller.youtube.ControllerYoutube</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerYoutube</servlet-name>
+    <url-pattern>/videos</url-pattern>
+  </servlet-mapping>
 </web-app>
