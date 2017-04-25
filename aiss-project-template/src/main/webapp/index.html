@@ -9,7 +9,7 @@
 </head>
 
 <body>
-	<header>
+	<!--  <header>
 		<h1>Mashup búsqueda de viajes.</h1>
 	</header>
 
@@ -30,7 +30,16 @@
 		</p>
 	</section>
 
+	-->
 	
+	<h1>Búsqueda de Viajes</h1>
+
+	<div id="searchDiv">
+		<form id="searchForm" action="SearchController" method="post">
+			<input type="text" name="searchQuery" required/> 
+			<input type="submit" name="searchBtn" title="search" value="search">
+		</form>
+	</div>
 
 </body>
 </html>
