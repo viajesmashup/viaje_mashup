@@ -15,7 +15,7 @@
 
 
 
-<p>Nombre: <c:out value="${weathers.id}"></c:out></p>
+<p>Nombre: <c:out value="${weathers.name}"></c:out></p>
 
 </body>
 </html>

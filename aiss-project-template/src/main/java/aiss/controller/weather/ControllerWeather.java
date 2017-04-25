@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import aiss.model.resources.WeatherResources;
+import aiss.model.weather.City;
 import aiss.model.weather.Weather;
 
 /**
@@ -54,8 +55,9 @@ public class ControllerWeather extends HttpServlet {
 		
 		
 		Weather weather = weatherResources.getWeather("London");
-		request.setAttribute("weathers", weather);
-		response.getWriter().append("ID es: "+weather.getWeather()).append(request.getContextPath());
+		request.setAttribute("weathers", weather.getCity());
+		//response.getWriter().append("ID es: "+weather).append(request.getContextPath());
+		
 		
 		log.log(Level.FINE, "Buscando el tiempo de la ciudad: " );
 		
@@ -64,6 +66,7 @@ public class ControllerWeather extends HttpServlet {
 		rd.forward(request, response);
 		
 		log.log(Level.FINE, "Se redirije a la vista: " );
+		
 
 	}
 

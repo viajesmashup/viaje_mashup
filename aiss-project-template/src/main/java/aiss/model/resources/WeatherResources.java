@@ -2,20 +2,12 @@ package aiss.model.resources;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import org.restlet.resource.ClientResource;
 
-import aiss.model.weather.Clouds;
-import aiss.model.weather.Coord;
-import aiss.model.weather.Main;
-import aiss.model.weather.Sys;
+import aiss.model.weather.City;
 import aiss.model.weather.Weather;
-import aiss.model.weather.Weather_;
-import aiss.model.weather.Wind;
 
 public class WeatherResources {
 
@@ -32,6 +24,7 @@ public class WeatherResources {
 			ClientResource cr = new ClientResource(uri);
 		
 			log.log(Level.INFO, uri);
+			
 			
 
 			return cr.get(Weather.class);

@@ -1,3 +1,4 @@
+
 package aiss.model.weather;
 
 import java.util.HashMap;
@@ -5,126 +6,73 @@ import java.util.List;
 import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-@JsonIgnoreProperties(ignoreUnknown=true)
 
+
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class Weather {
 
-private Coord coord;
-private List<Weather_> weather = null;
-private String base;
-private Main main;
-private Integer visibility;
-private Wind wind;
-private Clouds clouds;
-private Integer dt;
-private Sys sys;
-private Integer id;
-private String name;
-private Integer cod;
-private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private City city;
+    private Integer time;
+    private Main main;
+    private Wind wind;
+    private Clouds clouds;
+    private List<Weather_> weather = null;
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-public Coord getCoord() {
-return coord;
-}
+    public City getCity() {
+        return city;
+    }
 
-public void setCoord(Coord coord) {
-this.coord = coord;
-}
+    public void setCity(City city) {
+        this.city = city;
+    }
 
-public List<Weather_> getWeather() {
-return weather;
-}
+    public Integer getTime() {
+        return time;
+    }
 
-public void setWeather(List<Weather_> weather) {
-this.weather = weather;
-}
+    public void setTime(Integer time) {
+        this.time = time;
+    }
 
-public String getBase() {
-return base;
-}
+    public Main getMain() {
+        return main;
+    }
 
-public void setBase(String base) {
-this.base = base;
-}
+    public void setMain(Main main) {
+        this.main = main;
+    }
 
-public Main getMain() {
-return main;
-}
+    public Wind getWind() {
+        return wind;
+    }
 
-public void setMain(Main main) {
-this.main = main;
-}
+    public void setWind(Wind wind) {
+        this.wind = wind;
+    }
 
-public Integer getVisibility() {
-return visibility;
-}
+    public Clouds getClouds() {
+        return clouds;
+    }
 
-public void setVisibility(Integer visibility) {
-this.visibility = visibility;
-}
+    public void setClouds(Clouds clouds) {
+        this.clouds = clouds;
+    }
 
-public Wind getWind() {
-return wind;
-}
+    public List<Weather_> getWeather() {
+        return weather;
+    }
 
-public void setWind(Wind wind) {
-this.wind = wind;
-}
+    public void setWeather(List<Weather_> weather) {
+        this.weather = weather;
+    }
 
-public Clouds getClouds() {
-return clouds;
-}
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
 
-public void setClouds(Clouds clouds) {
-this.clouds = clouds;
-}
-
-public Integer getDt() {
-return dt;
-}
-
-public void setDt(Integer dt) {
-this.dt = dt;
-}
-
-public Sys getSys() {
-return sys;
-}
-
-public void setSys(Sys sys) {
-this.sys = sys;
-}
-
-public Integer getId() {
-return id;
-}
-
-public void setId(Integer id) {
-this.id = id;
-}
-
-public String getName() {
-return name;
-}
-
-public void setName(String name) {
-this.name = name;
-}
-
-public Integer getCod() {
-return cod;
-}
-
-public void setCod(Integer cod) {
-this.cod = cod;
-}
-
-public Map<String, Object> getAdditionalProperties() {
-return this.additionalProperties;
-}
-
-public void setAdditionalProperty(String name, Object value) {
-this.additionalProperties.put(name, value);
-}
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
+    }
 
 }
