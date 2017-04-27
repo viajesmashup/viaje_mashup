@@ -35,13 +35,13 @@ public class ControllerYoutube extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 			
 		RequestDispatcher rd = null;
 		YoutubeResources youtubeResources = new YoutubeResources();
 		
 		Youtube youtube = youtubeResources.getVideo("madrid");
-		request.setAttribute("videos", youtube.getPageInfo());
+		request.setAttribute("videos", youtube.getItems());
 		//response.getWriter().append("ID es: "+weather).append(request.getContextPath());
 		
 		

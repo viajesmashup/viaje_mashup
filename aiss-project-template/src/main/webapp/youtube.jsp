@@ -12,15 +12,21 @@
 	<h1>ESTAMOS EN YOUTUBE</h1>
 
 
-	<p>
-		Nombre:
-		<c:out value="${videos.totalResults}"></c:out>
-	</p>
 
 
-	<iframe width="50%" height="50%"
-		src="https://www.youtube.com/embed/YZ800gwEhDM" frameborder="0"
-		allowfullscreen></iframe>
+
+
+
+
+	<c:forEach items="${requestScope.videos}" var="video">
+		<div>
+			<iframe width="100%" height="100%"
+				src="https://www.youtube.com/embed/<c:out value="${video.id.videoId}"></c:out>"
+				frameborder="1" allowfullscreen></iframe>
+
+		</div>
+		<br>
+	</c:forEach>
 
 </body>
 </html>

@@ -15,10 +15,10 @@ public class YoutubeResources {
 
 	public Youtube getVideo(String ciudad) throws UnsupportedEncodingException {
 
-		String encodeQuery = URLEncoder.encode(ciudad, "UTF-8");
+		String encodeQuery = URLEncoder.encode("ciudad "+ciudad, "UTF-8");
 
 		String uri = "https://www.googleapis.com/youtube/v3/search?part=snippet%20" + "&q=" + encodeQuery + "&key="
-				+ YOUTUBE_API_KEY;
+				+ YOUTUBE_API_KEY+"&maxResults=5";
 
 		ClientResource cr = new ClientResource(uri);
 
