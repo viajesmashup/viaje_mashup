@@ -17,6 +17,7 @@ public class Youtube {
     private PageInfo pageInfo;
     private List<Item> items = null;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    
 
     public String getKind() {
         return kind;

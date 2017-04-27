@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-         <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,10 +9,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>ESTAMOS EN YOUTUBE</h1>
+	<h1>ESTAMOS EN YOUTUBE</h1>
 
 
-<p>Nombre: <c:out value="${videos.totalResults}"></c:out></p>
+	<p>
+		Nombre:
+		<c:out value="${videos.totalResults}"></c:out>
+	</p>
+
+
+	<iframe width="50%" height="50%"
+		src="https://www.youtube.com/embed/YZ800gwEhDM" frameborder="0"
+		allowfullscreen></iframe>
 
 </body>
 </html>
