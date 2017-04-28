@@ -33,7 +33,6 @@
     <servlet-name>ControllerYoutube</servlet-name>
     <url-pattern>/videos</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description></description>
     <display-name>ControllerBing</display-name>
@@ -43,5 +42,15 @@
   <servlet-mapping>
     <servlet-name>ControllerBing</servlet-name>
     <url-pattern>/imagenes</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ControllerSkyscanner</display-name>
+    <servlet-name>ControllerSkyscanner</servlet-name>
+    <servlet-class>aiss.controller.skyscanner.ControllerSkyscanner</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerSkyscanner</servlet-name>
+    <url-pattern>/vuelos</url-pattern>
   </servlet-mapping>
 </web-app>
