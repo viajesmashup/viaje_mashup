@@ -16,20 +16,17 @@ public class WeatherResources {
 
 	public Weather getWeather(String ciudad) throws UnsupportedEncodingException {
 
-			String encodeQuery = URLEncoder.encode(ciudad, "UTF-8");
+		String encodeQuery = URLEncoder.encode(ciudad, "UTF-8");
 
-			String uri = "http://api.openweathermap.org/data/2.5/forecast?q="+encodeQuery+"&cnt=20"
-					+ "&APPID="+WEATHER_API_KEY;
+		String uri = "http://api.openweathermap.org/data/2.5/forecast?q=" + encodeQuery + "&cnt=20" + "&APPID="
+				+ WEATHER_API_KEY+"&units=metric";
 
-			ClientResource cr = new ClientResource(uri);
-		
-			log.log(Level.INFO, uri);
-			
-			
+		ClientResource cr = new ClientResource(uri);
 
-			return cr.get(Weather.class);
-			
+		log.log(Level.INFO, uri);
+
+		return cr.get(Weather.class);
+
 	}
-		
 
 }

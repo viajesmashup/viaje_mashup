@@ -2,7 +2,6 @@
 package aiss.model.weather;
 
 import java.util.HashMap;
-
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -12,10 +11,8 @@ public class City {
 
     private Integer id;
     private String name;
-    private String findname;
-    private String country;
     private Coord coord;
-    private Integer zoom;
+    private String country;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public Integer getId() {
@@ -34,22 +31,6 @@ public class City {
         this.name = name;
     }
 
-    public String getFindname() {
-        return findname;
-    }
-
-    public void setFindname(String findname) {
-        this.findname = findname;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
     public Coord getCoord() {
         return coord;
     }
@@ -58,12 +39,12 @@ public class City {
         this.coord = coord;
     }
 
-    public Integer getZoom() {
-        return zoom;
+    public String getCountry() {
+        return country;
     }
 
-    public void setZoom(Integer zoom) {
-        this.zoom = zoom;
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public Map<String, Object> getAdditionalProperties() {

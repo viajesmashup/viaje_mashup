@@ -27,36 +27,21 @@ public class ControllerWeather extends HttpServlet {
      */
     public ControllerWeather() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//response.getWriter().append("Estamos en controlador de weather: ").append(request.getContextPath());
 		
-		/*
-		 * String query = request.getParameter("searchQuery");
-		RequestDispatcher rd = null;
-		
-		// Search for albums in Spotify
-		log.log(Level.FINE, "Searching for Spotify albums of " + query);
-		SpotifyResource spotify = new SpotifyResource();
-		AlbumSearch spotifyResults = spotify.getAlbums(query);
-		 * 
-		 * 
-		 * 
-		 */
 
 		RequestDispatcher rd = null;
 		WeatherResources weatherResources = new WeatherResources();
 		
 		
-		Weather weather = weatherResources.getWeather("London");
-		request.setAttribute("weathers", weather.getCity());
-		//response.getWriter().append("ID es: "+weather).append(request.getContextPath());
+		Weather weather = weatherResources.getWeather("Sevilla");
+		request.setAttribute("weathers", weather);
+		
 		
 		
 		log.log(Level.FINE, "Buscando el tiempo de la ciudad: " );

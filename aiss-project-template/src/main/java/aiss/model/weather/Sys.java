@@ -7,26 +7,17 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @JsonIgnoreProperties(ignoreUnknown=true)
-public class Wind {
+public class Sys {
 
-    private Double speed;
-    private Double deg;
+    private String pod;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    public Double getSpeed() {
-        return speed;
+    public String getPod() {
+        return pod;
     }
 
-    public void setSpeed(Double speed) {
-        this.speed = speed;
-    }
-
-    public Double getDeg() {
-        return deg;
-    }
-
-    public void setDeg(Double deg) {
-        this.deg = deg;
+    public void setPod(String pod) {
+        this.pod = pod;
     }
 
     public Map<String, Object> getAdditionalProperties() {
