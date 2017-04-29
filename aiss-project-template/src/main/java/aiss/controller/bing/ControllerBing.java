@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import aiss.model.bing.Photo;
+import aiss.model.generic.Busqueda;
 import aiss.model.resources.BingResources;
 
 /**
@@ -52,6 +53,16 @@ public class ControllerBing extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		String origen = request.getParameter("origen");
+		String destino = request.getParameter("destino");
+		String fechaSalida = request.getParameter("fechaLlegada");
+		String fechaLlegada = request.getParameter("fechaSalida");
+		
+		Busqueda busqueda = new Busqueda(origen,destino,fechaSalida,fechaLlegada);
+		
+		
+		
+		
 		RequestDispatcher rd = null;
 		String query = request.getParameter("destino");
 		
@@ -69,6 +80,8 @@ public class ControllerBing extends HttpServlet {
 
 		if (photoResults != null) {
 			request.setAttribute("photos", photoResults);
+			request.setAttribute("busqueda", busqueda);
+
 			rd = request.getRequestDispatcher("/imagenes.jsp");
 
 		} else {

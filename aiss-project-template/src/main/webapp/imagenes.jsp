@@ -10,28 +10,15 @@
 </head>
 <body>
 	<h1>ESTAMOS EN IMÁGENES</h1>
-
-
-
-
-
+<a href="/videos?destino=${busqueda.destino}">Vídeos de su destino </a>
 
 
 	<c:forEach items="${requestScope.photos.value}" var="foto">
 		<div>
 			<img src="<c:out value="${foto.contentUrl}"></c:out>"
-		alt="FotosCiudad" height="40%" width="50%">
-
-
+				alt="FotosCiudad" height="40%" width="50%">
 		</div>
-
 	</c:forEach>
-
-
-
-
-
-
 
 
 
