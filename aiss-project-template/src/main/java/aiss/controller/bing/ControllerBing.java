@@ -51,14 +51,16 @@ public class ControllerBing extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		String query = request.getParameter("searchQuery");
-		if (query == null) {
-			query = paisRandom();
-		} else {
-			query = request.getParameter("searchQuery");
-		}
+		
 		RequestDispatcher rd = null;
+		String query = request.getParameter("destino");
+		
+		if (query == null || query.isEmpty()) {
+			query = paisRandom();
+		}
+		
+		
+		
 
 		// Search for photo in Bing
 		log.log(Level.FINE, "Searching for BingImagenes Imagen of " + query);
@@ -66,7 +68,7 @@ public class ControllerBing extends HttpServlet {
 		Photo photoResults = bing.getBingPhotos(query);
 
 		if (photoResults != null) {
-			request.setAttribute("photos", photoResults.getValue().get(0));
+			request.setAttribute("photos", photoResults);
 			rd = request.getRequestDispatcher("/imagenes.jsp");
 
 		} else {
