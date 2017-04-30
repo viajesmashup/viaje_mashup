@@ -6,10 +6,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Vídeos</title>
 </head>
 <body>
 	<h1>ESTAMOS EN YOUTUBE</h1>
+	
+<a href="/">Inicio </a><br>
+<a href="/vuelos?origen=${busqueda.origen}&destino=${busqueda.destino}&fechaSalida=${busqueda.fechaSalida}&fechaLlegada=${busqueda.fechaLlegada}">Vuelos de su destino </a><br>
+<a href="/imagenes?origen=${busqueda.origen}&destino=${busqueda.destino}&fechaSalida=${busqueda.fechaSalida}&fechaLlegada=${busqueda.fechaLlegada}">Imágenes de su destino </a><br>
+<a href="/weather?origen=${busqueda.origen}&destino=${busqueda.destino}&fechaSalida=${busqueda.fechaSalida}&fechaLlegada=${busqueda.fechaLlegada}">Tiempo de su destino </a>
+
 
 
 
@@ -20,7 +26,7 @@
 
 	<c:forEach items="${requestScope.videos}" var="video">
 		<div>
-			<iframe width="100%" height="100%"
+			<iframe width="50%" height="50%"
 				src="https://www.youtube.com/embed/<c:out value="${video.id.videoId}"></c:out>"
 				frameborder="1" allowfullscreen></iframe>
 

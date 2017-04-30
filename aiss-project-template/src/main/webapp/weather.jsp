@@ -6,11 +6,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Weather</title>
 </head>
 <body>
 
 <h1> ESTAMOS EN WEATHER.JSP</h1>
+
+<a href="/">Inicio </a><br>
+<a href="/videos?origen=${busqueda.origen}&destino=${busqueda.destino}&fechaSalida=${busqueda.fechaSalida}&fechaLlegada=${busqueda.fechaLlegada}">Vídeos de su destino </a><br>
+<a href="/vuelos?origen=${busqueda.origen}&destino=${busqueda.destino}&fechaSalida=${busqueda.fechaSalida}&fechaLlegada=${busqueda.fechaLlegada}">Vuelos de su destino </a><br>
+<a href="/imagenes?origen=${busqueda.origen}&destino=${busqueda.destino}&fechaSalida=${busqueda.fechaSalida}&fechaLlegada=${busqueda.fechaLlegada}">Imágenes de su destino </a>
 
 	<div style="border: 2px solid black">
 		<p> Ciudad: <c:out value="${weathers.city.name}"></c:out> </p>
