@@ -1,0 +1,23 @@
+{	
+	"GoogleDrive":{ 
+		"tokenUrl":"https://www.googleapis.com/oauth2/v4/token",
+		"clientId":"267296623295-tuq6jefjo891q7jatoatofc9i6a0ckeg.apps.googleusercontent.com",
+		"clientSecret":"zfhqF9mAZLJFLOcQ4SdXzeOk" ,
+		"authorizationFormUrl":"https://accounts.google.com/o/oauth2/v2/auth",
+		"scopes":["https://www.googleapis.com/auth/drive"]
+	},
+	"Facebook":{
+		"tokenUrl":"https://graph.facebook.com/v2.8/oauth/access_token",
+		"clientId":"662756597246834",
+		"clientSecret":"0064eb3983ab10c00f29f5414a185e9c" ,
+		"authorizationFormUrl":"https://www.facebook.com/v2.8/dialog/oauth",
+		"scopes":["user_friends","user_posts","publish_actions"]
+	},
+	"Spotify":{
+		"tokenUrl":"",
+		"clientId":"",
+		"clientSecret":"" ,
+		"authorizationFormUrl":"",
+		"scopes":[]
+	}
+}		

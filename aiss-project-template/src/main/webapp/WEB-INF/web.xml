@@ -43,14 +43,79 @@
     <servlet-name>ControllerBing</servlet-name>
     <url-pattern>/imagenes</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>ControllerSkyscanner</display-name>
-    <servlet-name>ControllerSkyscanner</servlet-name>
-    <servlet-class>aiss.controller.skyscanner.ControllerSkyscanner</servlet-class>
+    
+  <servlet>        
+    <servlet-name>FacebookFriendsListing</servlet-name>
+  	<servlet-class>aiss.controller.facebook.FacebookFriendsController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ControllerSkyscanner</servlet-name>
-    <url-pattern>/vuelos</url-pattern>
+    <servlet-name>FacebookFriendsListing</servlet-name>
+     <url-pattern>/facebookFriendsListing</url-pattern>
   </servlet-mapping>
+  
+  <servlet>        
+    <servlet-name>FacebookPostCreation</servlet-name>
+  	<servlet-class>aiss.controller.facebook.FacebookPostController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FacebookPostCreation</servlet-name>
+     <url-pattern>/facebookPostCreation</url-pattern>
+  </servlet-mapping>
+  
+  <!--  OAUTH SERVLETS 
+  
+  	For each OAuth 2.0 service, you need to create two servlets: one for the initiation 
+  	and another for the callback. After sucess the token for the provider will be available
+  	in the session scope under the name <provider>-token. E.g.: Spotify-token.
+  	
+  	Those servlets support 2 parameters:
+  	 - provider: which is mandatory and specifies the configuration from the OAuthConfig.json file which
+  	    will be applied.
+  	 - onSuccess: which is optional specifies the behaviour of the servlet after an successful 
+  	 	authorization. If you specify close as the value of the parameter, the page will close. If you
+  	 	specify redirect:XXXX, the page will be redirected to XXXX.  
+  	
+  	WARNING: The url-patterns of all the servlets mus be disjoint. 
+  			Our recommendation is that if you expecify X as the provider, the url-pattern of the 
+  			initiation servlet could be	/AuthController/X, and the url-pattern of the callback
+  			 servlet must be /oauth2callback/X.
+  -->
+  <!--    Spotify example -->     
+
+  <!--    Google Drive OAuth Servlets -->    
+
+  <!--    Facebook OAuth Servlets -->    
+  <servlet>
+    <description></description>
+    <display-name>FacebookAuthController</display-name>
+    <servlet-name>FacebookAuthController</servlet-name>
+    <servlet-class>aiss.controller.facebook.oauth.GenericAuthController</servlet-class>
+    <init-param>
+    	<param-name>provider</param-name>
+    	<param-value>Facebook</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FacebookAuthController</servlet-name>
+    <url-pattern>/AuthController/Facebook</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FacebookOAuth2Callback</display-name>
+    <servlet-name>FacebookOAuth2Callback</servlet-name>
+    <servlet-class>aiss.controller.facebook.oauth.OAuth2Callback</servlet-class>
+    <init-param>
+    	<param-name>provider</param-name>
+    	<param-value>Facebook</param-value>
+    </init-param>
+    <init-param>
+    	<param-name>onSuccess</param-name>
+    	<param-value>redirect:/facebookFriendsListing</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FacebookOAuth2Callback</servlet-name>
+    <url-pattern>/oauth2callback/Facebook</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
