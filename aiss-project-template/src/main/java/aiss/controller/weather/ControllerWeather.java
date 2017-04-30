@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import aiss.model.generic.Busqueda;
 import aiss.model.resources.WeatherResources;
 import aiss.model.weather.City;
 import aiss.model.weather.Weather;
@@ -34,13 +35,21 @@ public class ControllerWeather extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		
+		String origen = request.getParameter("origen");
+		String destino = request.getParameter("destino");
+		String fechaSalida = request.getParameter("fechaLlegada");
+		String fechaLlegada = request.getParameter("fechaSalida");
+		
+		Busqueda busqueda = new Busqueda(origen,destino,fechaSalida,fechaLlegada);
 
 		RequestDispatcher rd = null;
 		WeatherResources weatherResources = new WeatherResources();
 		
 		
-		Weather weather = weatherResources.getWeather("Sevilla");
+		Weather weather = weatherResources.getWeather(destino);
 		request.setAttribute("weathers", weather);
+		request.setAttribute("busqueda", busqueda);
 		
 		
 		

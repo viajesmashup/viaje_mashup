@@ -13,20 +13,7 @@ import org.restlet.resource.ClientResource;
 import org.restlet.util.Series;
 
 import aiss.model.bing.Photo;
-import aiss.model.bing.QueryExpansion;
 
-/**
- * 
- * ClientResource resource = new ClientResource(yourUrl); Form headers =
- * (Form)resource.getRequestAttributes().get("org.restlet.http.headers"); if
- * (headers == null) { headers = new Form();
- * resource.getRequestAttributes().put("org.restlet.http.headers", headers); }
- * headers.add("yourHeaderName", yourHeaderValue); resource.get(); Response
- * response = resource.getResponse(); String text =
- * response.getEntity().getText(); String status =
- * response.getStatus().toString();
- *
- */
 
 public class BingResources {
 
@@ -52,7 +39,7 @@ public class BingResources {
 		Series<Header> headers = (Series<Header>) cr.getRequest().getAttributes()
 				.get(HeaderConstants.ATTRIBUTE_HEADERS);
 
-		if (headers == null) {
+		if (headers == null)  {
 			headers = new Series<Header>(Header.class);
 			headers.add(headerName, headerValue);
 		}

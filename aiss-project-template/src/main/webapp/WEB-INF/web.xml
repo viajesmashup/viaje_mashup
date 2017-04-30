@@ -45,12 +45,12 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>ControllerSkyscanner</display-name>
-    <servlet-name>ControllerSkyscanner</servlet-name>
-    <servlet-class>aiss.controller.skyscanner.ControllerSkyscanner</servlet-class>
+    <display-name>ControllerZomato</display-name>
+    <servlet-name>ControllerZomato</servlet-name>
+    <servlet-class>aiss.controller.zomato.ControllerZomato</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ControllerSkyscanner</servlet-name>
-    <url-pattern>/vuelos</url-pattern>
+    <servlet-name>ControllerZomato</servlet-name>
+    <url-pattern>/restaurantes</url-pattern>
   </servlet-mapping>
 </web-app>
