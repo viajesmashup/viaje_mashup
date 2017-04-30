@@ -12,9 +12,10 @@
 	<h1>ESTAMOS EN IMÁGENES</h1>
 	
 <a href="/">Inicio </a><br>
-<a href="/videos?origen=${busqueda.origen}&destino=${busqueda.destino}&fechaSalida=${busqueda.fechaSalida}&fechaLlegada=${busqueda.fechaLlegada}">Vídeos de su destino </a><br>
-<a href="/weather?origen=${busqueda.origen}&destino=${busqueda.destino}&fechaSalida=${busqueda.fechaSalida}&fechaLlegada=${busqueda.fechaLlegada}">Tiempo de su destino </a><br>
-<a href="/vuelos?origen=${busqueda.origen}&destino=${busqueda.destino}&fechaSalida=${busqueda.fechaSalida}&fechaLlegada=${busqueda.fechaLlegada}">Vuelos de su destino </a>
+<a href="/videos?&destino=${busqueda.destino}">Vídeos de su destino </a><br>
+<a href="/weather?&destino=${busqueda.destino}">Tiempo de su destino </a><br>
+<a href="/restaurantes?&destino=${busqueda.destino}">Restaurantes de su destino </a><br>
+<a href="/facebookPostCreation?&destino=${busqueda.destino}">Postear en facebook </a>
 
 
 	<c:forEach items="${requestScope.photos.value}" var="foto">

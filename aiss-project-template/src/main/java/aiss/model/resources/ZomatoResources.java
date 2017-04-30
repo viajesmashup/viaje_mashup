@@ -52,12 +52,17 @@ public class ZomatoResources {
 
 		String encodeQuery = URLEncoder.encode(lugar, "UTF-8");
 
-		String uri = "https://developers.zomato.com/api/v2.1/search?entity_type=city&q=paris&count=2";
+		String uri = "https://developers.zomato.com/api/v2.1/search?entity_type=city&q="+encodeQuery;
 
 		ClientResource cr = new ClientResource(uri);
+		
+		
+
 	
 		addHeader(cr, "user-key",ZOMATO_API_KEY);
 		//addHeader(cr, "Accept", "application/json");
+		
+		log.log(Level.INFO, uri);
 		
 		return cr.get(Zomato.class);
 

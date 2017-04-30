@@ -37,12 +37,13 @@ public class ControllerYoutube extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String origen = request.getParameter("origen");
 		String destino = request.getParameter("destino");
-		String fechaSalida = request.getParameter("fechaLlegada");
-		String fechaLlegada = request.getParameter("fechaSalida");
 
-		Busqueda busqueda = new Busqueda(origen, destino, fechaSalida, fechaLlegada);
+		
+		if(destino==null || destino.isEmpty())
+			destino="madrid";
+
+		Busqueda busqueda = new Busqueda(destino);
 
 		RequestDispatcher rd = null;
 		YoutubeResources youtubeResources = new YoutubeResources();
@@ -51,7 +52,7 @@ public class ControllerYoutube extends HttpServlet {
 		request.setAttribute("videos", youtube.getItems());
 		request.setAttribute("busqueda", busqueda);
 
-		log.log(Level.FINE, "Buscando vídeos de la ciudad: ");
+		log.log(Level.FINE, "Buscando vídeos de la ciudad: "+destino);
 
 		rd = request.getRequestDispatcher("/youtube.jsp");
 

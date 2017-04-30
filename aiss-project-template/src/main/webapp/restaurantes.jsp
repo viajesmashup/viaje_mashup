@@ -11,9 +11,26 @@
 <body>
 
 
+
 <h1> ESTAMOS EN RESTAURANTE</h1>
 
-				<p> Nombre del restaurante: <c:out value="${zomato.name}"></c:out> </p>
+<a href="/">Inicio </a><br>
+<a href="/videos?&destino=${busqueda.destino}">Vídeos de su destino </a><br>
+<a href="/weather?&destino=${busqueda.destino}">Tiempo de su destino </a><br>
+<a href="/imagenes?&destino=${busqueda.destino}">Restaurantes de su destino </a><br>
+<a href="/facebookPostCreation?&destino=${busqueda.destino}">Postear en facebook </a>
+
+					<c:forEach items="${requestScope.zomato.restaurants}" var="lista">
+					
+						<div style="border: 2px solid black">
+							<p>Nombre del restaurante: <c:out value="${lista.restaurant.name}"> </c:out> </p>
+							<p>Calle: <c:out value="${lista.restaurant.location.address}"> </c:out> </p>
+							<p>Localidad: <c:out value="${lista.restaurant.location.locality}"> </c:out> </p>
+							<p>Ciudad: <c:out value="${lista.restaurant.location.city}"> </c:out> </p>
+							<a href="${lista.restaurant.url}">Url del sitio</a><br>	
+						</div>
+				
+					</c:forEach>
 
 </body>
 </html>

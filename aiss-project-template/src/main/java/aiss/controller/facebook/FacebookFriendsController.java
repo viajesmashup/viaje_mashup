@@ -19,13 +19,7 @@ public class FacebookFriendsController extends HttpServlet {
 	private static final Logger log = Logger.getLogger(FacebookFriendsController.class.getName());
 
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException,ServletException {
-		// TODO: Completar! Seguir el siguiente esquema:
-		// 1.- Comprobrar si tenemos un access token.
-		// 2.- Si tenemos un access token consultamos los amigos y
-		//   los colocamos en el request y redirigimos a la jsp de
-		//	 representación de amigos.
-		// 3.- Si no tenemos access token redirigimos al initiator
-		//        servlet de Facebook.
+
 		String accessToken=(String)req.getSession().getAttribute("Facebook-token");
 		if(accessToken!=null && !"".equals(accessToken)){
 			FacebookFriendsResource fbResource=new FacebookFriendsResource(accessToken);

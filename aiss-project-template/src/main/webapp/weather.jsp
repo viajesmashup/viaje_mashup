@@ -13,10 +13,10 @@
 <h1> ESTAMOS EN WEATHER.JSP</h1>
 
 <a href="/">Inicio </a><br>
-<a href="/videos?origen=${busqueda.origen}&destino=${busqueda.destino}&fechaSalida=${busqueda.fechaSalida}&fechaLlegada=${busqueda.fechaLlegada}">Vídeos de su destino </a><br>
-<a href="/vuelos?origen=${busqueda.origen}&destino=${busqueda.destino}&fechaSalida=${busqueda.fechaSalida}&fechaLlegada=${busqueda.fechaLlegada}">Vuelos de su destino </a><br>
-<a href="/imagenes?origen=${busqueda.origen}&destino=${busqueda.destino}&fechaSalida=${busqueda.fechaSalida}&fechaLlegada=${busqueda.fechaLlegada}">Imágenes de su destino </a>
-
+<a href="/videos?&destino=${busqueda.destino}">Vídeos de su destino </a><br>
+<a href="/imagenes?&destino=${busqueda.destino}">Imágenes de su destino </a><br>
+<a href="/restaurantes?&destino=${busqueda.destino}">Restaurantes de su destino </a><br>
+<a href="/facebookPostCreation?&destino=${busqueda.destino}">Postear en facebook </a>
 	<div style="border: 2px solid black">
 		<p> Ciudad: <c:out value="${weathers.city.name}"></c:out> </p>
 		<p> País: <c:out value="${weathers.city.country}"></c:out> </p>

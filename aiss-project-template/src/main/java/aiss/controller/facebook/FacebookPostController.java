@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import aiss.model.facebook.FacebookFriends;
+import aiss.model.generic.Busqueda;
 import aiss.model.resources.FacebookFriendsResource;
 import aiss.model.resources.FacebookPostResource;
 
@@ -21,6 +22,10 @@ public class FacebookPostController extends HttpServlet {
 
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException,ServletException {
+		
+		
+
+		
 		String accessToken=(String)req.getSession().getAttribute("Facebook-token");
 		if(accessToken!=null && !"".equals(accessToken)){
 			FacebookPostResource fbResource=new FacebookPostResource(accessToken);

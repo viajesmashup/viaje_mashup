@@ -53,30 +53,24 @@ public class ControllerBing extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		String origen = request.getParameter("origen");
-		String destino = request.getParameter("destino");
-		String fechaSalida = request.getParameter("fechaLlegada");
-		String fechaLlegada = request.getParameter("fechaSalida");
-		
-		Busqueda busqueda = new Busqueda(origen,destino,fechaSalida,fechaLlegada);
-		
-		
-		
-		
 		RequestDispatcher rd = null;
-		String query = request.getParameter("destino");
+
+		String destino = request.getParameter("destino");
 		
-		if (query == null || query.isEmpty()) {
-			query = paisRandom();
+	
+		
+		
+		if (destino == null || destino.isEmpty()) {
+			destino = paisRandom();
 		}
 		
 		
-		
+		Busqueda busqueda = new Busqueda(destino);
 
 		// Search for photo in Bing
-		log.log(Level.FINE, "Searching for BingImagenes Imagen of " + query);
+		log.log(Level.FINE, "Searching for BingImagenes Imagen of " + destino);
 		BingResources bing = new BingResources();
-		Photo photoResults = bing.getBingPhotos(query);
+		Photo photoResults = bing.getBingPhotos(destino);
 
 		if (photoResults != null) {
 			request.setAttribute("photos", photoResults);
