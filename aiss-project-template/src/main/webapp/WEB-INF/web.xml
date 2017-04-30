@@ -43,27 +43,62 @@
     <servlet-name>ControllerBing</servlet-name>
     <url-pattern>/imagenes</url-pattern>
   </servlet-mapping>
-<<<<<<< HEAD
-    
-  <servlet>        
-    <servlet-name>FacebookFriendsListing</servlet-name>
-  	<servlet-class>aiss.controller.facebook.FacebookFriendsController</servlet-class>
-=======
   <servlet>
     <description></description>
     <display-name>ControllerZomato</display-name>
     <servlet-name>ControllerZomato</servlet-name>
     <servlet-class>aiss.controller.zomato.ControllerZomato</servlet-class>
->>>>>>> branch 'master' of https://github.com/viajesmashup/viaje_mashup.git
   </servlet>
   <servlet-mapping>
-<<<<<<< HEAD
-    <servlet-name>FacebookFriendsListing</servlet-name>
-     <url-pattern>/facebookFriendsListing</url-pattern>
-=======
     <servlet-name>ControllerZomato</servlet-name>
     <url-pattern>/restaurantes</url-pattern>
->>>>>>> branch 'master' of https://github.com/viajesmashup/viaje_mashup.git
+  </servlet-mapping>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <servlet>        
+    <servlet-name>FacebookFriendsListing</servlet-name>
+  	<servlet-class>aiss.controller.facebook.FacebookFriendsController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FacebookFriendsListing</servlet-name>
+     <url-pattern>/facebookFriendsListing</url-pattern>
   </servlet-mapping>
   
   <servlet>        
@@ -130,5 +165,12 @@
     <servlet-name>FacebookOAuth2Callback</servlet-name>
     <url-pattern>/oauth2callback/Facebook</url-pattern>
   </servlet-mapping>
+  
+  
+  
+  
+  
+  
+  
   
 </web-app>
