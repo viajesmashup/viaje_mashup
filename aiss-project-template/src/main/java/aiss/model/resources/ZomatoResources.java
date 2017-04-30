@@ -12,16 +12,17 @@ import org.restlet.engine.header.HeaderConstants;
 import org.restlet.resource.ClientResource;
 import org.restlet.util.Series;
 
-import aiss.model.skyscanner.Flights;
+import aiss.model.zomato.Zomato;
 
-public class SkyscannerResources {
-	private static final Logger log = Logger.getLogger(SkyscannerResources.class.getName());
-	private static final String SKYSCANNER_API_KEY = "bu317168613791557276499071709357";
-
+public class ZomatoResources {
+	
+	private static final String ZOMATO_API_KEY = "25dff576ca075fc1b71c48667e116342";
+	private static final Logger log = Logger.getLogger(BingResources.class.getName());
+	
 	@SuppressWarnings("unchecked")
 	static Series<Header> getMessageHeaders(Message message) {
 		ConcurrentMap<String, Object> attrs = message.getAttributes();
-		Series<Header> headers = (Series<Header>) attrs.get(HeaderConstants.ATTRIBUTE_HEADERS);
+		Series<Header> headers = (Series<Header>) attrs.get(HeaderConstants.HEADER_ACCESS_CONTROL_ALLOW_HEADERS);
 		if (headers == null) {
 			headers = new Series<Header>(Header.class);
 			Series<Header> prev = (Series<Header>) attrs.putIfAbsent(HeaderConstants.ATTRIBUTE_HEADERS, headers);
@@ -31,7 +32,7 @@ public class SkyscannerResources {
 		}
 		return headers;
 	}
-
+	
 	@SuppressWarnings("unchecked")
 	public void addHeader(ClientResource cr, String headerName, String headerValue) {
 		Series<Header> headers = (Series<Header>) cr.getRequest().getAttributes()
@@ -47,21 +48,19 @@ public class SkyscannerResources {
 		}
 	}
 
-	public Flights getLugar(String ciudad) throws UnsupportedEncodingException {
-		// String encodeQuery = URLEncoder.encode(ciudad, "UTF-8");
+	public Zomato getZomato(String lugar) throws UnsupportedEncodingException {
 
-		String encodeQuery = "FR";
-		String uri = "http://partners.api.skyscanner.net/apiservices/browseroutes/v1.0/FR/eur/en-US" + "/us/"
-				+ encodeQuery + "/anytime/anytime?apikey=" + SKYSCANNER_API_KEY;
-		log.log(Level.INFO, uri);
+		String encodeQuery = URLEncoder.encode(lugar, "UTF-8");
+
+		String uri = "https://developers.zomato.com/api/v2.1/search?entity_type=city&q=paris&count=2";
 
 		ClientResource cr = new ClientResource(uri);
+	
+		addHeader(cr, "user-key",ZOMATO_API_KEY);
+		//addHeader(cr, "Accept", "application/json");
 		
-		addHeader(cr, "Accept", "application/json");
-		log.log(Level.INFO, "BING RESOURCES");
-
-
-		return cr.get(Flights.class);
+		return cr.get(Zomato.class);
 
 	}
+
 }
