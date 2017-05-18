@@ -12,6 +12,7 @@ import org.restlet.engine.header.HeaderConstants;
 import org.restlet.resource.ClientResource;
 import org.restlet.util.Series;
 
+import aiss.model.zomato.IdZomato;
 import aiss.model.zomato.Zomato;
 
 public class ZomatoResources {
@@ -49,10 +50,15 @@ public class ZomatoResources {
 	}
 
 	public Zomato getZomato(String lugar) throws UnsupportedEncodingException {
+	
+		IdZomato idZomato = getIdZomato(lugar);
+	
+		log.log(Level.INFO,"La id de zomato es: "+idZomato.getLocationSuggestions().get(0).getId());
+		Integer idCity = idZomato.getLocationSuggestions().get(0).getId();
+		
+		//log.log(Level.INFO,"La id de city es: "+idCity);
 
-		String encodeQuery = URLEncoder.encode(lugar, "UTF-8");
-
-		String uri = "https://developers.zomato.com/api/v2.1/search?entity_type=city&q="+encodeQuery;
+		String uri = "https://developers.zomato.com/api/v2.1/search?entity_id="+idCity+"&entity_type=city";
 
 		ClientResource cr = new ClientResource(uri);
 		
@@ -65,6 +71,27 @@ public class ZomatoResources {
 		log.log(Level.INFO, uri);
 		
 		return cr.get(Zomato.class);
+
+	}
+	
+	
+	public IdZomato getIdZomato (String lugar) throws UnsupportedEncodingException {
+
+		String encodeQuery = URLEncoder.encode(lugar, "UTF-8");
+
+		String uri = "https://developers.zomato.com/api/v2.1/cities?q="+encodeQuery;
+
+		ClientResource cr = new ClientResource(uri);
+		
+		
+
+	
+		addHeader(cr, "user-key",ZOMATO_API_KEY);
+		//addHeader(cr, "Accept", "application/json");
+		
+		log.log(Level.INFO, uri);
+		
+		return cr.get(IdZomato.class);
 
 	}
 

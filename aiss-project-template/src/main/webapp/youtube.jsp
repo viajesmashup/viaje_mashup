@@ -12,10 +12,10 @@
 	<h1>ESTAMOS EN YOUTUBE</h1>
 	
 <a href="/">Inicio </a><br>
-<a href="/imagenes?&destino=${busqueda.destino}">Imágenes de su destino </a><br>
-<a href="/weather?&destino=${busqueda.destino}">Tiempo de su destino </a><br>
-<a href="/restaurantes?&destino=${busqueda.destino}">Restaurantes de su destino </a><br>
-<a href="/facebookPostCreation?&destino=${busqueda.destino}">Postear en facebook </a>
+<a href="/imagenes?destino=${busqueda.destino}">Imágenes de su destino </a><br>
+<a href="/weather?destino=${busqueda.destino}">Tiempo de su destino </a><br>
+<a href="/restaurantes?destino=${busqueda.destino}">Restaurantes de su destino </a><br>
+<a href="/facebookPostCreation?destino=${busqueda.destino}">Postear en facebook </a>
 
 
 

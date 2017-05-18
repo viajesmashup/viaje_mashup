@@ -134,9 +134,7 @@
   			initiation servlet could be	/AuthController/X, and the url-pattern of the callback
   			 servlet must be /oauth2callback/X.
   -->
-  <!--    Spotify example -->     
-
-  <!--    Google Drive OAuth Servlets -->    
+ 
 
   <!--    Facebook OAuth Servlets -->    
   <servlet>
@@ -173,6 +171,32 @@
   </servlet-mapping>
   
   
+  
+   <!-- PARA LA API -->
+ 
+ 
+   <!-- All REST resources will be prefixed by /api  -->
+	<context-param>
+		<param-name>resteasy.servlet.mapping.prefix</param-name>
+		<param-value>/api/v1</param-value>
+	</context-param>
+
+	<!-- Servlets -->
+	<servlet>
+		<servlet-name>Resteasy</servlet-name>
+		<servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
+		<init-param>
+			<param-name>javax.ws.rs.Application</param-name>
+			<param-value>aiss.api.favouritesUserApplication.UserApplication</param-value>
+		</init-param>
+	</servlet>		
+	
+	<!-- Servlet mappings -->
+	<!-- All calls to /api/xx will be sent to the resteasy servlet -->
+	<servlet-mapping>
+		<servlet-name>Resteasy</servlet-name>
+		<url-pattern>/api/v1/*</url-pattern>
+	</servlet-mapping>
   
   
   
