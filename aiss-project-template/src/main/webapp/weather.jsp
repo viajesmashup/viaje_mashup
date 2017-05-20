@@ -1,38 +1,64 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@include file="includes/header.jsp"%>
+
+
+	<nav>
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo">TIEMPO</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse" ><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+      <li><a href="/">Inicio </a></li>
+        <li><a href="/videos?&destino=${busqueda.destino}">Vídeos</a></li>
+        <li><a href="/restaurantes?&destino=${busqueda.destino}">Restaurantes</a></li>
+        <li><a href="/imagenes?destino=${busqueda.destino}">Imágenes</a></li>
+        <li><a href="/editPost.jsp?&destino=${busqueda.destino}">facebook</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+      <li><a href="/">Inicio </a></li>
+        <li><a href="/videos?&destino=${busqueda.destino}">Vídeos</a></li>
+        <li><a href="/weather?&destino=${busqueda.destino}">Tiempo</a></li>
+        <li><a href="/imagenes?destino=${busqueda.destino}">Imágenes</a></li>
+        <li><a href="/editPost.jsp?&destino=${busqueda.destino}">facebook</a></li>
+      </ul>
+    </div>
+    </nav>
     
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Weather</title>
-</head>
-<body>
-
-<h1> ESTAMOS EN WEATHER.JSP</h1>
-
-<a href="/">Inicio </a><br>
-<a href="/videos?destino=${busqueda.destino}">VÃ­deos de su destino </a><br>
-<a href="/imagenes?destino=${busqueda.destino}">ImÃ¡genes de su destino </a><br>
-<a href="/restaurantes?destino=${busqueda.destino}">Restaurantes de su destino </a><br>
-<a href="/facebookPostCreation?destino=${busqueda.destino}">Postear en facebook </a>
-	<div style="border: 2px solid black">
-		<p> Ciudad: <c:out value="${weathers.city.name}"></c:out> </p>
-		<p> PaÃ­s: <c:out value="${weathers.city.country}"></c:out> </p>
+   
+	
+	<table class="striped">	
+	
+     
+    
+	<thead >
+          <tr>
+	
+		<h5 > CIUDAD: <c:out value="${weathers.city.name}"></c:out> </h5>
+		<h5> PAÍS: <c:out value="${weathers.city.country}"></c:out> </h5>
+		
+		 </tr>
+        </thead>
+       
+        
+        <tbody>
 		
 		<c:forEach items="${requestScope.weathers.list}" var="lista">
-			<div style="border: 2px solid black">
+			<div>
+				
+				<tr>
+				 <td>
 				<p> Fecha y hora: <c:out value="${lista.dt_txt}"></c:out> </p>
-				<p> Temperatura: <c:out value="${lista.main.temp}"></c:out> CÂº </p>
-				<p> Temperatura min: <c:out value="${lista.main.temp_min}"></c:out> CÂº </p>
-				<p> Temperatura max: <c:out value="${lista.main.temp_max}"></c:out> CÂº </p>
+				<p> Temperatura: <c:out value="${lista.main.temp}"></c:out> Cº </p>
+				<p> Temperatura min: <c:out value="${lista.main.temp_min}"></c:out> Cº </p>
+				<p> Temperatura max: <c:out value="${lista.main.temp_max}"></c:out> Cº </p>
+				</td>
+				</tr>
 				
 			</div>
 				
 		</c:forEach>
-	
+		</tr>
+		</tbody>
+	</tr>
+	</table>
 	</div>
 
-</body>
-</html>
+<%@include file="includes/footer.jsp"%>

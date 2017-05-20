@@ -1,31 +1,35 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>V√≠deos</title>
-</head>
-<body>
-	<h1>ESTAMOS EN YOUTUBE</h1>
+<%@include file="includes/header.jsp"%>
 	
-<a href="/">Inicio </a><br>
-<a href="/imagenes?destino=${busqueda.destino}">Im√°genes de su destino </a><br>
-<a href="/weather?destino=${busqueda.destino}">Tiempo de su destino </a><br>
-<a href="/restaurantes?destino=${busqueda.destino}">Restaurantes de su destino </a><br>
-<a href="/facebookPostCreation?destino=${busqueda.destino}">Postear en facebook </a>
 
+<nav>
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo">VIDEOS</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse" ><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+      <li><a href="/">Inicio </a></li>
+        <li><a href="/imagenes?destino=${busqueda.destino}"">Im·genes</a></li>
+        <li><a href="/weather?&destino=${busqueda.destino}">Tiempo</a></li>
+        <li><a href="/restaurantes?&destino=${busqueda.destino}">Restaurantes</a></li>
+        <li><a href="/editPost.jsp?destino=${busqueda.destino}">Facebook</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+      <li><a href="/">Inicio </a></li>
+        <li><a href="/imagenes?destino=${busqueda.destino}"">Im·genes</a></li>
+        <li><a href="/weather?&destino=${busqueda.destino}">Tiempo</a></li>
+        <li><a href="/restaurantes?&destino=${busqueda.destino}">Restaurantes</a></li>
+        <li><a href="/editPost.jsp?&destino=${busqueda.destino}">Facebook</a></li>
+      </ul>
+    </div>
+  </nav>
 
-
+<%@include file="includes/footer.jsp"%>
 
 
 
 
 	<c:forEach items="${requestScope.videos}" var="video">
 		<div>
-			<iframe width="50%" height="50%"
+			<iframe width="100%" height="400px"
 				src="https://www.youtube.com/embed/<c:out value="${video.id.videoId}"></c:out>"
 				frameborder="1" allowfullscreen></iframe>
 
@@ -33,5 +37,3 @@
 		<br>
 	</c:forEach>
 
-</body>
-</html>

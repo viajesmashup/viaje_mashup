@@ -1,31 +1,35 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Imagenes</title>
-</head>
-<body>
-	<h1>ESTAMOS EN IMÁGENES</h1>
-	
-<a href="/">Inicio </a><br>
-<a href="/videos?destino=${busqueda.destino}">Vídeos de su destino </a><br>
-<a href="/weather?destino=${busqueda.destino}">Tiempo de su destino </a><br>
-<a href="/restaurantes?destino=${busqueda.destino}">Restaurantes de su destino </a><br>
-<a href="/facebookPostCreation?destino=${busqueda.destino}">Postear en facebook </a>
+<%@include file="includes/header.jsp"%>
 
 
-	<c:forEach items="${requestScope.photos.value}" var="foto">
-		<div>
-			<img src="<c:out value="${foto.contentUrl}"></c:out>"
-				alt="FotosCiudad" height="40%" width="50%">
+
+ <nav>
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo">IMÁGENES</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse" ><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+      <li><a href="/">Inicio </a></li>
+        <li><a href="/videos?&destino=${busqueda.destino}">Vídeos</a></li>
+        <li><a href="/weather?&destino=${busqueda.destino}">Tiempo</a></li>
+        <li><a href="/restaurantes?&destino=${busqueda.destino}">Restaurantes</a></li>
+        <li><a href="/editPost.jsp?destino=${busqueda.destino}">facebook</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+      <li><a href="/">Inicio </a></li>
+        <li><a href="/videos?&destino=${busqueda.destino}">Vídeos</a></li>
+        <li><a href="/weather?&destino=${busqueda.destino}">Tiempo</a></li>
+        <li><a href="/restaurantes?&destino=${busqueda.destino}">Restaurantes</a></li>
+        <li><a href="/editPost.jsp?destino=${busqueda.destino}">facebook</a></li>
+      </ul>
+    </div>
+  </nav>
+
+ 
+     <c:forEach items="${requestScope.photos.value}" var="foto">
+		<div class= center>
+			<img  src="<c:out value="${foto.contentUrl}"></c:out>"
+				alt="FotosCiudad" width=100% height=100%s>
+				
 		</div>
 	</c:forEach>
-
-
-
-</body>
-</html>
+	
+<%@include file="includes/footer.jsp"%>
