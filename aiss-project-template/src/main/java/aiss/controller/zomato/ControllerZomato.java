@@ -40,21 +40,27 @@ public class ControllerZomato extends HttpServlet {
 		RequestDispatcher rd = null;
 
 		String destino = request.getParameter("destino");
-		
-		
-		if(destino==null || destino.isEmpty())
-			destino="paris";
+
+		if (destino == null || destino.isEmpty())
+			destino = "paris";
 		Busqueda busqueda = new Busqueda(destino);
 
-		// Search for photo in Bing
+		// Search for zomato
 		log.log(Level.FINE, "Searching for Zomato: " + destino);
 		ZomatoResources zomato = new ZomatoResources();
 		Zomato zomatoResults = zomato.getZomato(destino);
 
-		request.setAttribute("zomato", zomatoResults);
-		request.setAttribute("busqueda", busqueda);
-		log.log(Level.FINE, "Searching for Zomato: " +destino);
-		rd = request.getRequestDispatcher("/restaurantes.jsp");
+		if (zomatoResults == null || zomatoResults.getRestaurants().size() <= 0) {
+			log.log(Level.SEVERE, "Zomato object: " + zomatoResults);
+			rd = request.getRequestDispatcher("/errorRestaurant.jsp");
+		} else {
+
+			log.log(Level.SEVERE, "Zomato object: " + zomatoResults);
+			request.setAttribute("zomato", zomatoResults);
+			request.setAttribute("busqueda", busqueda);
+			rd = request.getRequestDispatcher("/restaurantes.jsp");
+
+		}
 
 		rd.forward(request, response);
 

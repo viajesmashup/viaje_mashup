@@ -22,7 +22,6 @@ import aiss.api.model.*;
 import aiss.api.respository.FavouritesRepository;
 
 import java.net.URI;
-import java.util.Collection;
 import java.util.List;
 
 @Path("/favourites")
@@ -43,7 +42,7 @@ public class FavouriteResource {
 
 	@GET
 	@Produces("application/json")
-	public Collection<List<UserCity>> getAll() {
+	public List<UserCity> getAll() {
 		return repository.getAllFavourites();
 	}
 
@@ -62,7 +61,7 @@ public class FavouriteResource {
 	@GET
 	@Path("/{userId}/{cityId}")
 	@Produces("application/json")
-	public UserCity get(@PathParam("userId") String userId, @PathParam("cityId") String cityId) {
+	public UserCity getUserCity(@PathParam("userId") String userId, @PathParam("cityId") String cityId) {
 		UserCity city = repository.getFavouriteUserCity(userId, cityId);
 
 		if (city == null) {
@@ -71,61 +70,131 @@ public class FavouriteResource {
 		}
 		return city;
 	}
-	/*
-	 * @POST
-	 * 
-	 * @Consumes("application/json")
-	 * 
-	 * @Produces("application/json") public Response addSong(@Context UriInfo
-	 * uriInfo, Song song) {
-	 * 
-	 * if (song == null) throw new BadRequestException("The playlist with id=" +
-	 * song + " was not found");
-	 * 
-	 * if (song.getTitle() == null || "".equals(song.getTitle())) throw new
-	 * NotFoundException("The song with id=" + song + " was not found");
-	 * 
-	 * Song s = repository.getSong(song.getId()); if (s != null) { return
-	 * Response.status(Status.CONFLICT).build();
-	 * 
-	 * // return Response.status(409).build(); }
-	 * 
-	 * repository.addSong(song);
-	 * 
-	 * // Builds the response UriBuilder ub =
-	 * uriInfo.getAbsolutePathBuilder().path(this.getClass(), "get"); URI uri =
-	 * ub.build(song.getId()); ResponseBuilder resp = Response.created(uri);
-	 * resp.entity(song); return resp.build(); }
-	 * 
-	 * @PUT
-	 * 
-	 * @Consumes("application/json") public Response updateSong(Song updateSong)
-	 * {
-	 * 
-	 * Song oldSong = repository.getSong(updateSong.getId());
-	 * 
-	 * repository.updateSong(updateSong);
-	 * 
-	 * if (oldSong == null) throw new
-	 * BadRequestException("No existe la canción para modificar");
-	 * 
-	 * return Response.noContent().build(); }
-	 * 
-	 * @DELETE
-	 * 
-	 * @Path("/{id}") public Response removeSong(@PathParam("id") String songId)
-	 * {
-	 * 
-	 * Song songToDelete = repository.getSong(songId);
-	 * 
-	 * if (songToDelete == null) throw new
-	 * BadRequestException("No existe la canción para eliminar");
-	 * 
-	 * repository.deleteSong(songId);
-	 * 
-	 * return Response.noContent().build();// 204
-	 * 
-	 * }
-	 */
+	
+	@GET
+	@Path("/{userId}/{cityId}/weather")
+	@Produces("application/json")
+	public List<Weather> getWeathers(@PathParam("userId") String userId, @PathParam("cityId") String cityId) {
+		List<Weather> weather = repository.getWeatherUserCity(userId, cityId);
+
+		if (weather == null) {
+			throw new NotFoundException("No se encuentran ciudades para el usuario " + userId);
+
+		}
+		return weather;
+	}
+	
+	@GET
+	@Path("/{userId}/{cityId}/videos")
+	@Produces("application/json")
+	public List<Video> getVideos(@PathParam("userId") String userId, @PathParam("cityId") String cityId) {
+		List<Video> videos = repository.getVideosUserCity(userId, cityId);
+
+		if (videos == null) {
+			throw new NotFoundException("No se encuentran ciudades para el usuario " + userId);
+
+		}
+		return videos;
+	}
+	
+	@GET
+	@Path("/{userId}/{cityId}/restaurants")
+	@Produces("application/json")
+	public List<Restaurant> getRestaurants(@PathParam("userId") String userId, @PathParam("cityId") String cityId) {
+		List<Restaurant> restaurants = repository.getRestaurantsUserCity(userId, cityId);
+
+		if (restaurants == null) {
+			throw new NotFoundException("No se encuentran ciudades para el usuario " + userId);
+
+		}
+		return restaurants;
+	}
+	
+	
+	@DELETE
+	public Response removeFavourites() {
+		List<UserCity> favourites = repository.getAllFavourites();
+		if (favourites == null)
+			throw new NotFoundException("Was not found");
+		else
+			repository.deleteFavourites();
+		
+		return Response.noContent().build();
+	}
+
+	
+	@DELETE
+	@Path("/{userId}")
+	public Response removeFavouritesUserId(@PathParam("userId") String userId) {
+		List<UserCity> cities = repository.getAllFavouritesUser(userId);
+		if (cities == null)
+			throw new NotFoundException("The user "+ userId +" was not found");
+		else
+			repository.deleteFavourites(userId);
+		
+		return Response.noContent().build();
+	}
+	
+	
+	@POST	
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Response addFavourite(@Context UriInfo uriInfo,UserCity userCity)
+	{				
+	
+		repository.addCity(userCity);	
+
+		// Builds the response
+		UriBuilder ub = uriInfo.getAbsolutePathBuilder().path(this.getClass(), "get");
+		URI uri = ub.build(userCity);
+		ResponseBuilder resp = Response.created(uri);
+		resp.entity(userCity);			
+		return resp.build();
+	}
+	
+	@POST	
+	@Path("/{userId}")
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Response addFavouriteUser(@Context UriInfo uriInfo,UserCity userCity,@PathParam("userId") String userId)
+	{				
+	
+		repository.addUserCity(userId, userCity);	
+
+		// Builds the response
+		UriBuilder ub = uriInfo.getAbsolutePathBuilder().path(this.getClass(), "get");
+		URI uri = ub.build(userCity);
+		ResponseBuilder resp = Response.created(uri);
+		resp.entity(userCity);			
+		return resp.build();
+	}
+	
+	@PUT
+	@Path("/{userId}/{cityId}")
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Response updateFavouritesUser(@Context UriInfo uriInfo,@PathParam("userId") String userId,@PathParam("cityId") String cityId,UserCity userCity) {
+
+		UserCity userCityOld = repository.getFavouriteUserCity(userId, cityId);
+
+		if (userCityOld == null)
+			throw new BadRequestException("No existe la ciudad para modificar");
+		
+		repository.updateCity(userCityOld, userCity, userId);
+		
+		UriBuilder ub = uriInfo.getAbsolutePathBuilder().path(this.getClass(), "get");
+		URI uri = ub.build(userCity);
+		ResponseBuilder resp = Response.created(uri);
+		resp.entity(userCity);			
+		return resp.build();
+	}
+
+
+
+	
+
+
+	
+	
 
 }

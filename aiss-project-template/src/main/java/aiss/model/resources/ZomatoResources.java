@@ -52,9 +52,17 @@ public class ZomatoResources {
 	public Zomato getZomato(String lugar) throws UnsupportedEncodingException {
 	
 		IdZomato idZomato = getIdZomato(lugar);
-	
+		Integer idCity = -1;
+		try{
 		log.log(Level.INFO,"La id de zomato es: "+idZomato.getLocationSuggestions().get(0).getId());
-		Integer idCity = idZomato.getLocationSuggestions().get(0).getId();
+		 idCity = idZomato.getLocationSuggestions().get(0).getId();
+		}
+		catch(Exception e){
+			
+			log.log(Level.SEVERE, "Se ha capturado una excepción null pointer"+e.getMessage());
+
+			
+		}
 		
 		//log.log(Level.INFO,"La id de city es: "+idCity);
 

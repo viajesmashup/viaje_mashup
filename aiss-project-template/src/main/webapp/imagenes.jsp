@@ -4,7 +4,9 @@
 
  <nav>
     <div class="nav-wrapper">
-      <a href="#!" class="brand-logo">IMÁGENES</a>
+  
+      
+      <div><a href="#!" class="brand-logo left"> IMÁGENES</a></div>
       <a href="#" data-activates="mobile-demo" class="button-collapse" ><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
       <li><a href="/">Inicio </a></li>
@@ -20,6 +22,7 @@
         <li><a href="/restaurantes?destino=${busqueda.destino}">Restaurantes</a></li>
         <li><a href="/editPost.jsp?destino=${busqueda.destino}">Facebook</a></li>
       </ul>
+      
     </div>
   </nav>
 

@@ -23,6 +23,22 @@ public class UserCity {
 		this.weather = new ArrayList<Weather>();
 	
 	}
+	
+	
+
+	public UserCity(String id, String nombre, String pais, List<Video> videos, List<Restaurant> restaurants,
+			List<Picture> pictures, List<Weather> weather) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.pais = pais;
+		this.videos = videos;
+		this.restaurants = restaurants;
+		this.pictures = pictures;
+		this.weather = weather;
+	}
+
+
 
 	public String getId() {
 		return id;
@@ -80,7 +96,7 @@ public class UserCity {
 		this.weather = weather;
 	}
 
-	public void addPicture(Picture p) {
+	/*public void addPicture(Picture p) {
 
 		this.pictures.add(p);
 
@@ -90,6 +106,10 @@ public class UserCity {
 
 		this.videos.add(v);
 
-	}
+	}*/
+	
+	
+	
+
 
 }

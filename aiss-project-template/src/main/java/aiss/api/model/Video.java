@@ -9,6 +9,12 @@ public class Video {
 		super();
 	}
 
+	public Video(String id, String url) {
+
+		this.id = id;
+		this.url = url;
+	}
+
 	public String getId() {
 		return id;
 	}

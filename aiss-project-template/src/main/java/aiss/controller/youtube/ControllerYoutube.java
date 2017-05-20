@@ -39,20 +39,24 @@ public class ControllerYoutube extends HttpServlet {
 
 		String destino = request.getParameter("destino");
 
-		
-		if(destino==null || destino.isEmpty())
-			destino="madrid";
+		if (destino == null || destino.isEmpty())
+			destino = "madrid";
 
 		Busqueda busqueda = new Busqueda(destino);
-
+		log.log(Level.FINE, "Buscando vídeos de la ciudad: " + destino);
 		RequestDispatcher rd = null;
 		YoutubeResources youtubeResources = new YoutubeResources();
 
 		Youtube youtube = youtubeResources.getVideo(destino);
-		request.setAttribute("videos", youtube.getItems());
-		request.setAttribute("busqueda", busqueda);
 
-		log.log(Level.FINE, "Buscando vídeos de la ciudad: "+destino);
+		if (youtube != null) {
+			request.setAttribute("videos", youtube.getItems());
+			request.setAttribute("busqueda", busqueda);
+		} else {
+			log.log(Level.SEVERE, "youtube object: " + youtube);
+
+		}
+		log.log(Level.FINE, "Se redirije a la vista: ");
 
 		rd = request.getRequestDispatcher("/youtube.jsp");
 

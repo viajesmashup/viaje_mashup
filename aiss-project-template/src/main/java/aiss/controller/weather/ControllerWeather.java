@@ -21,53 +21,52 @@ public class ControllerWeather extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final Logger log = Logger.getLogger(ControllerWeather.class.getName());
 
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ControllerWeather() {
-        super();
-    }
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public ControllerWeather() {
+		super();
+	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		String destino = request.getParameter("destino");
-		
-		if(destino==null || destino.isEmpty())
-			destino="madrid";
-		
+
+		if (destino == null || destino.isEmpty())
+			destino = "madrid";
+
+		log.log(Level.FINE, "Buscando el tiempo de la ciudad: " + destino);
+
 		Busqueda busqueda = new Busqueda(destino);
 
 		RequestDispatcher rd = null;
 		WeatherResources weatherResources = new WeatherResources();
-		
-		
 		Weather weather = weatherResources.getWeather(destino);
-		request.setAttribute("weathers", weather);
-		request.setAttribute("busqueda", busqueda);
-		
-		
-		
-		log.log(Level.FINE, "Buscando el tiempo de la ciudad: " +destino);
-		
-		rd = request.getRequestDispatcher("/weather.jsp");
-		
+		if (weather != null) {
+
+			request.setAttribute("weathers", weather);
+			request.setAttribute("busqueda", busqueda);
+
+			rd = request.getRequestDispatcher("/weather.jsp");
+		} else {
+			log.log(Level.SEVERE, "Weather object: " + weatherResources);
+		}
+		log.log(Level.FINE, "Se redirije a la vista: ");
 		rd.forward(request, response);
-		
-		log.log(Level.FINE, "Se redirije a la vista: " );
-		
 
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

@@ -1,0 +1,301 @@
+swagger: '2.0'
+info:
+  version: '1.0.9'
+  title: Búsqueda de Restaurantes
+  description: Api de búsqueda de restaurantes
+host: busquedaviajesmashup.appspot.com
+basePath: /api/v1
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /favourites:
+    get:
+      description: favourites
+      responses:
+        '200':
+          description: favourite response
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/userCities'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/errorModel'
+    post:
+      description: Add a favorite city 
+      parameters:
+        - name: city
+          in: body
+          description: Add a favorite city
+          required: true
+          schema:
+            $ref: '#/definitions/city'
+      responses:
+        '200':
+          description: city response
+          schema:
+            $ref: '#/definitions/city'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/errorModel'
+    delete:
+      description: deletes favorite cities
+      responses:
+        '204':
+          description: city deleted
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/errorModel'
+  '/favourites/{userId}/':
+    get:
+      description: View all the favorite cities of a particular user
+      parameters:
+        - name: userId
+          in: path
+          description: userId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: favourite city response
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/city'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/errorModel'
+    post:
+      description: Add a favorite city specify user
+      parameters:
+        - name: userId
+          in: path
+          description: userId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: city response
+          schema:
+            $ref: '#/definitions/city'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/errorModel'
+    delete:
+      description: deletes favorite cities to a specific user
+      parameters:
+        - name: userId
+          in: path
+          description: tags
+          required: true
+          type: string
+          format: int64
+      responses:
+        '204':
+          description: city deleted
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/errorModel'
+  '/favourites/{userId}/{cityId}':
+    get:
+      description: View a specific favourite cities of a particular user
+      parameters:
+        - name: userId
+          in: path
+          description: userId
+          required: true
+          type: string
+        - name: cityId
+          in: path
+          description: cityId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: specific favourite cities
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/city'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/errorModel'
+    put:
+      description: Modify a specific favourite cities of a particular user
+      parameters:
+        - name: userId
+          in: path
+          description: userId
+          required: true
+          type: string
+        - name: cityId
+          in: path
+          description: cityId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: city response
+          schema:
+            $ref: '#/definitions/city'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/errorModel'
+  '/favourites/{userId}/{cityId}/weather':
+    get:
+      description: See the time of the city
+      parameters:
+        - name: userId
+          in: path
+          description: userId
+          required: true
+          type: string
+        - name: cityId
+          in: path
+          description: cityId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: weather response
+          schema:
+            $ref: '#/definitions/weather'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/errorModel'
+  '/favourites/{userId}/{cityId}/videos':
+    get:
+      description: View videos
+      parameters:
+        - name: userId
+          in: path
+          description: userId
+          required: true
+          type: string
+        - name: cityId
+          in: path
+          description: cityId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: video response
+          schema:
+            $ref: '#/definitions/video'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/errorModel'
+  '/favourites/{userId}/{cityId}/restaurants':
+    get:
+      description: View  restaurant
+      parameters:
+        - name: userId
+          in: path
+          description: userId
+          required: true
+          type: string
+        - name: cityId
+          in: path
+          description: cityId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: restaurant response
+          schema:
+            $ref: '#/definitions/restaurant'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/errorModel'
+definitions:
+  userCities:
+    type: object
+    properties:
+      ciudades:
+        type: array
+        items:
+          $ref: '#/definitions/city'
+  city:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      country:
+        type: string
+      videos:
+        type: array
+        items:
+          $ref: '#/definitions/video'
+      restaurants:
+        type: array
+        items:
+          $ref: '#/definitions/restaurant'
+      pictures:
+        type: array
+        items:
+          $ref: '#/definitions/picture'
+      weather:
+        type: array
+        items:
+          $ref: '#/definitions/weather'
+  video:
+    type: object
+    properties:
+      id:
+        type: string
+      url:
+        type: string
+  restaurant:
+    type: object
+    properties:
+      name:
+        type: string
+      street:
+        type: string
+      nameCity:
+        type: string
+      location:
+        type: string
+  picture:
+    type: object
+    properties:
+      url:
+        type: string
+  weather:
+    type: object
+    properties:
+      temperature:
+        type: string
+      minTemperature:
+        type: string
+      maxTemperature:
+        type: string
+  errorModel:
+    type: object
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string

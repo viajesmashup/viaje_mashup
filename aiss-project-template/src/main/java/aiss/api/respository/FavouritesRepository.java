@@ -13,12 +13,19 @@ import aiss.api.model.Video;
 import aiss.api.model.Weather;
 import aiss.model.bing.Photo;
 import aiss.model.bing.Value;
+import aiss.model.google.youtube.Item;
+import aiss.model.google.youtube.Youtube;
 import aiss.model.resources.BingResources;
+import aiss.model.resources.WeatherResources;
+import aiss.model.resources.YoutubeResources;
+import aiss.model.resources.ZomatoResources;
+import aiss.model.zomato.Zomato;
 
 public class FavouritesRepository {
 
 	private Map<String, List<UserCity>> favourites;
 	private static FavouritesRepository instance = null;
+	private List<UserCity> ciudades = new ArrayList<UserCity>();
 
 	public static FavouritesRepository getInstance() {
 
@@ -34,204 +41,142 @@ public class FavouritesRepository {
 
 		favourites = new HashMap<String, List<UserCity>>();
 		List<Picture> pictures = new ArrayList<Picture>();
-
-		// Create Video
-
-		Video v1 = new Video();
-
-		v1.setId("1");
-		v1.setUrl("url1");
-
-		Video v2 = new Video();
-
-		v2.setId("2");
-		v2.setUrl("url2");
-
-		Video v3 = new Video();
-
-		v3.setId("3");
-		v3.setUrl("url3");
-
-		Video v4 = new Video();
-
-		v4.setId("4");
-		v4.setUrl("4");
-
-		Video v5 = new Video();
-
-		v5.setId("5");
-		v5.setUrl("5");
-
 		List<Video> videos = new ArrayList<Video>();
-		videos.add(v1);
-		videos.add(v2);
-		videos.add(v3);
-		videos.add(v4);
-		videos.add(v5);
-
-		// create restaurant
-
-		Restaurant r1 = new Restaurant();
-
-		r1.setName("r1");
-		r1.setStreet("street 1");
-		r1.setNameCity("city 1");
-		r1.setLocation("location 1");
-
-		Restaurant r2 = new Restaurant();
-
-		r2.setName("r2");
-		r2.setStreet("street 2");
-		r2.setNameCity("city 2");
-		r2.setLocation("location 2");
-
-		Restaurant r3 = new Restaurant();
-
-		r3.setName("r3");
-		r3.setStreet("street 3");
-		r3.setNameCity("city 3");
-		r3.setLocation("location 3");
-
-		Restaurant r4 = new Restaurant();
-
-		r4.setName("r4");
-		r4.setStreet("street 4");
-		r4.setNameCity("city 4");
-		r4.setLocation("location 4");
-
-		Restaurant r5 = new Restaurant();
-
-		r5.setName("r5");
-		r5.setStreet("street 5");
-		r5.setNameCity("city 5");
-		r5.setLocation("location 5");
-
 		List<Restaurant> restaurants = new ArrayList<Restaurant>();
-		restaurants.add(r1);
-		restaurants.add(r2);
-		restaurants.add(r3);
-		restaurants.add(r4);
-		restaurants.add(r5);
-
-		// create weather
-
-		Weather w1 = new Weather();
-
-		w1.setTemperature("t1");
-		w1.setMinTemperature("t_min1");
-		w1.setMaxTemperature("t_max1");
-
-		Weather w2 = new Weather();
-
-		w2.setTemperature("t2");
-		w2.setMinTemperature("t_min2");
-		w2.setMaxTemperature("t_max2");
-
-		Weather w3 = new Weather();
-
-		w3.setTemperature("t3");
-		w3.setMinTemperature("t_min3");
-		w3.setMaxTemperature("t_max3");
-
-		Weather w4 = new Weather();
-
-		w4.setTemperature("t4");
-		w4.setMinTemperature("t_min4");
-		w4.setMaxTemperature("t_max4");
-
-		Weather w5 = new Weather();
-
-		w5.setTemperature("t5");
-		w5.setMinTemperature("t_min5");
-		w5.setMaxTemperature("t_max5");
 		List<Weather> weathers = new ArrayList<Weather>();
 
-		weathers.add(w1);
-		weathers.add(w2);
-		weathers.add(w3);
-		weathers.add(w4);
-		weathers.add(w5);
-
 		// Create UserCity
+		// city 1
 		UserCity lugar1 = new UserCity();
 
 		lugar1.setNombre("Paris");
 		lugar1.setPais("Francia");
 		lugar1.setId("1");
 
-		pictures = this.searchPicture(lugar1.getNombre());
+		pictures = this.searchPictures(lugar1.getNombre());
+		videos = this.searchVideos(lugar1.getNombre());
+		restaurants = this.searchRestaurants(lugar1.getNombre());
+		weathers = this.searchWeather(lugar1.getNombre());
 
 		lugar1.setPictures(pictures);
 		lugar1.setRestaurants(restaurants);
 		lugar1.setVideos(videos);
 		lugar1.setWeather(weathers);
 
+		// city 2
 		UserCity lugar2 = new UserCity();
 
 		lugar2.setNombre("Sevilla");
 		lugar2.setPais("España");
 		lugar2.setId("2");
-		pictures = this.searchPicture(lugar2.getNombre());
-		
+		pictures = this.searchPictures(lugar2.getNombre());
+		videos = this.searchVideos(lugar2.getNombre());
+		restaurants = this.searchRestaurants(lugar2.getNombre());
+		weathers = this.searchWeather(lugar2.getNombre());
+
 		lugar2.setPictures(pictures);
 		lugar2.setRestaurants(restaurants);
 		lugar2.setVideos(videos);
 		lugar2.setWeather(weathers);
 
+		// city 3
 		UserCity lugar3 = new UserCity();
 
 		lugar3.setNombre("Madrid");
 		lugar3.setPais("España");
 		lugar3.setId("3");
-		pictures = this.searchPicture(lugar3.getNombre());
+		pictures = this.searchPictures(lugar3.getNombre());
+		videos = this.searchVideos(lugar3.getNombre());
+		restaurants = this.searchRestaurants(lugar3.getNombre());
+		weathers = this.searchWeather(lugar3.getNombre());
+
 		lugar3.setPictures(pictures);
 		lugar3.setRestaurants(restaurants);
 		lugar3.setVideos(videos);
 		lugar3.setWeather(weathers);
 
+		// city 4
 		UserCity lugar4 = new UserCity();
 
 		lugar4.setNombre("Pamplona");
 		lugar4.setPais("España");
 		lugar4.setId("4");
-		pictures = this.searchPicture(lugar4.getNombre());
+		pictures = this.searchPictures(lugar4.getNombre());
+		videos = this.searchVideos(lugar4.getNombre());
+		restaurants = this.searchRestaurants(lugar4.getNombre());
+		weathers = this.searchWeather(lugar4.getNombre());
+
 		lugar4.setPictures(pictures);
 		lugar4.setRestaurants(restaurants);
 		lugar4.setVideos(videos);
 		lugar4.setWeather(weathers);
 
+		// city 5
 		UserCity lugar5 = new UserCity();
 
-		lugar5.setNombre("Pamplona");
-		lugar5.setPais("España");
+		lugar5.setNombre("Lisboa");
+		lugar5.setPais("Portugal");
 		lugar5.setId("5");
-		pictures = this.searchPicture(lugar5.getNombre());
+		pictures = this.searchPictures(lugar5.getNombre());
+		videos = this.searchVideos(lugar5.getNombre());
+		restaurants = this.searchRestaurants(lugar5.getNombre());
+		weathers = this.searchWeather(lugar5.getNombre());
+
 		lugar5.setPictures(pictures);
 		lugar5.setRestaurants(restaurants);
 		lugar5.setVideos(videos);
 		lugar5.setWeather(weathers);
 
 		// add cities
-		List<UserCity> ciudades = new ArrayList<UserCity>();
 
 		ciudades.add(lugar1);
 		ciudades.add(lugar2);
 		ciudades.add(lugar3);
 		ciudades.add(lugar4);
+		ciudades.add(lugar5);
 
-		List<UserCity> ciudades2 = new ArrayList<UserCity>();
+		// favourites users
 
-		ciudades2.add(lugar5);
-
-		favourites.put("JOSE", ciudades);
-		favourites.put("ANTONIO", ciudades2);
+		this.addUserCities("JOSE", ciudades);
+		this.addUserCity("ANTONIO",lugar1);
 
 	}
 
-	private List<Picture> searchPicture(String lugar) {
+	public void addCity(UserCity userCity) {
+
+		this.ciudades.add(userCity);
+
+	}
+
+	public void addUserCities(String userId, List<UserCity> userCities) {
+
+		favourites.put(userId, userCities);
+
+	}
+
+	public void addUserCity(String userId, UserCity userCity) {
+		 List<UserCity> ciudades = new ArrayList<UserCity>();
+
+		
+		
+		if(this.favourites.containsKey(userId))
+			this.favourites.get(userId).add(userCity);
+		else{
+			ciudades.add(userCity);
+			this.favourites.put(userId, ciudades);
+		}
+			
+
+	}
+
+	/**
+	 * Método para buscar fotos y te devuelve una lista de fotos
+	 */
+
+	private List<Picture> searchPictures(String lugar) {
 
 		List<Picture> pictures = new ArrayList<Picture>();
-		Picture picture = new Picture();
+		Picture picture;
 
 		BingResources bing = new BingResources();
 
@@ -239,8 +184,10 @@ public class FavouritesRepository {
 			Photo photoResults = bing.getBingPhotos(lugar);
 			for (Value valor : photoResults.getValue()) {
 
+				picture = new Picture();
 				picture.setUrl(valor.getContentUrl());
 				pictures.add(picture);
+				picture = null;
 
 			}
 		} catch (Exception e) {
@@ -251,9 +198,106 @@ public class FavouritesRepository {
 
 	}
 
-	public Collection<List<UserCity>> getAllFavourites() {
+	/**
+	 * Método para buscar el tiempo y te devuelve una lista de tiempo
+	 */
+	private List<Weather> searchWeather(String lugar) {
 
-		return favourites.values();
+		List<Weather> weathers = new ArrayList<Weather>();
+		Weather weather;
+
+		WeatherResources weatherResources = new WeatherResources();
+
+		try {
+			aiss.model.weather.Weather w = weatherResources.getWeather(lugar);
+
+			for (aiss.model.weather.List valor : w.getList()) {
+
+				weather = new Weather();
+				weather.setTemperature(String.valueOf(valor.getMain().getTemp()));
+				weather.setMinTemperature(String.valueOf(valor.getMain().getTemp_min()));
+				weather.setMaxTemperature(String.valueOf(valor.getMain().getTemp_max()));
+				weathers.add(weather);
+
+				weather = null;
+
+			}
+		} catch (Exception e) {
+
+		}
+
+		return weathers;
+
+	}
+
+	/**
+	 * Método para buscar videos y te devuelve una lista de videos
+	 */
+
+	private List<Video> searchVideos(String lugar) {
+
+		List<Video> videos = new ArrayList<Video>();
+		Video video;
+
+		YoutubeResources youtubeResources = new YoutubeResources();
+
+		try {
+			Youtube youtube = youtubeResources.getVideo(lugar);
+
+			for (Item valor : youtube.getItems()) {
+
+				video = new Video();
+				video.setId(valor.getId().getVideoId());
+				video.setUrl("https://www.youtube.com/watch?v=" + video.getId());
+				videos.add(video);
+				video = null;
+
+			}
+		} catch (Exception e) {
+
+		}
+
+		return videos;
+
+	}
+
+	/**
+	 * Método para buscar restaurantes y te devuelve una lista de restaurantes
+	 */
+
+	private List<Restaurant> searchRestaurants(String lugar) {
+
+		List<Restaurant> restaurants = new ArrayList<Restaurant>();
+		Restaurant restaurant;
+
+		ZomatoResources zomato = new ZomatoResources();
+
+		try {
+			Zomato zomatoResults = zomato.getZomato(lugar);
+
+			for (aiss.model.zomato.Restaurant valor : zomatoResults.getRestaurants()) {
+
+				restaurant = new Restaurant();
+				restaurant.setName(valor.getRestaurant().getName());
+				restaurant.setNameCity(valor.getRestaurant().getLocation().getCity());
+				restaurant.setStreet(valor.getRestaurant().getLocation().getAddress());
+				restaurant.setLocation(valor.getRestaurant().getLocation().getLocality());
+
+				restaurants.add(restaurant);
+				restaurant = null;
+
+			}
+		} catch (Exception e) {
+
+		}
+
+		return restaurants;
+
+	}
+
+	public List<UserCity> getAllFavourites() {
+
+		return this.ciudades;
 
 	}
 
@@ -261,6 +305,13 @@ public class FavouritesRepository {
 
 		return favourites.get(userId);
 
+	}
+	
+	public void updateCity(UserCity oldCity,UserCity newCity,String userId){
+		
+		this.getAllFavouritesUser(userId).remove(oldCity);	
+		this.addUserCity(userId, newCity);
+		
 	}
 
 	public UserCity getFavouriteUserCity(String userId, String cityId) {
@@ -279,6 +330,54 @@ public class FavouritesRepository {
 
 		return c;
 
+	}
+
+	public List<Weather> getWeatherUserCity(String userId, String cityId) {
+
+		UserCity city = this.getFavouriteUserCity(userId, cityId);
+
+		List<Weather> retorno = null;
+
+		if (city != null)
+			retorno = city.getWeather();
+
+		return retorno;
+
+	}
+
+	public List<Video> getVideosUserCity(String userId, String cityId) {
+
+		UserCity city = this.getFavouriteUserCity(userId, cityId);
+
+		List<Video> retorno = null;
+
+		if (city != null)
+			retorno = city.getVideos();
+
+		return retorno;
+
+	}
+
+	public List<Restaurant> getRestaurantsUserCity(String userId, String cityId) {
+
+		UserCity city = this.getFavouriteUserCity(userId, cityId);
+
+		List<Restaurant> retorno = null;
+
+		if (city != null)
+			retorno = city.getRestaurants();
+
+		return retorno;
+
+	}
+
+	public void deleteFavourites() {
+		this.getAllFavourites().clear();
+	}
+
+	public void deleteFavourites(String userId) {
+
+		this.favourites.get(userId).clear();
 	}
 
 }
