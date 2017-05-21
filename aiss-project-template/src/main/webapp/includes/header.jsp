@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Mashup || Búsqueda de Viajes</title>
+<title>Mashup || Búsqueda de Restaurantes</title>
 <!--Import Google Icon Font-->
 <link href="http://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
@@ -40,6 +40,7 @@ $(document).ready(function(){
 
 
 </script>
+
 
 </head>
 <body>

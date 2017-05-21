@@ -1,11 +1,9 @@
 <%@include file="includes/header.jsp"%>
 
-
+<main>
 
  <nav>
     <div class="nav-wrapper">
-  
-      
       <a href="/imagenes?destino=${busqueda.destino}" class="brand-logo"> IMÁGENES</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse" ><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
@@ -22,7 +20,6 @@
         <li><a href="/restaurantes?destino=${busqueda.destino}">Restaurantes</a></li>
         <li><a href="/editPost.jsp?destino=${busqueda.destino}">Facebook</a></li>
       </ul>
-      
     </div>
   </nav>
 
@@ -34,5 +31,6 @@
 				
 		</div>
 	</c:forEach>
+</main>
 	
 <%@include file="includes/footer.jsp"%>
