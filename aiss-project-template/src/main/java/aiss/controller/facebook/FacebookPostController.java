@@ -24,17 +24,19 @@ public class FacebookPostController extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException,ServletException {
 		
 		
-
+		
 		
 		String accessToken=(String)req.getSession().getAttribute("Facebook-token");
 		if(accessToken!=null && !"".equals(accessToken)){
 			FacebookPostResource fbResource=new FacebookPostResource(accessToken);
 			fbResource.publishPost(req.getParameter("message"));
-			req.getRequestDispatcher("/").forward(req,resp);
+			req.getRequestDispatcher("/postCorrecto.jsp").forward(req,resp);
 		}else{
 			log.info("Trying to acces to Facebook without an acces token, redirecting to OAuth servlet");
 			req.getRequestDispatcher("/AuthController/Facebook").forward(req,resp);
 		}
+		
+		
 	}
 	
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException,ServletException {

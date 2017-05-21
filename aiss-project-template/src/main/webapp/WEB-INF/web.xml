@@ -162,7 +162,7 @@
     </init-param>
     <init-param>
     	<param-name>onSuccess</param-name>
-    	<param-value>redirect:/facebookFriendsListing</param-value>
+    	<param-value>redirect:/postCorrecto.jsp</param-value>
     </init-param>
   </servlet>
   <servlet-mapping>
