@@ -1,16 +1,35 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+<%@include file="includes/header.jsp"%>
+<nav>
+	<div class="nav-wrapper">
+
+
+		<a href="#!" class="brand-logo">ERROR</a> <a href="#"
+			data-activates="mobile-demo" class="button-collapse"><i
+			class="material-icons">menu</i></a>
+		<ul class="right hide-on-med-and-down">
+			<li><a href="/">Inicio </a></li>
+			<li><a href="/imagenes?destino=${busqueda.destino}">Imágenes</a></li>
+			<li><a href="/videos?destino=${busqueda.destino}">Vídeos</a></li>
+			<li><a href="/weather?destino=${busqueda.destino}">Tiempo</a></li>
+			<li><a href="/restaurantes?destino=${busqueda.destino}">Restaurantes</a></li>
+			<li><a href="/editPost.jsp?destino=${busqueda.destino}">Facebook</a></li>
+
+		</ul>
+		<ul class="side-nav" id="mobile-demo">
+			<li><a href="/">Inicio </a></li>       
+			 <li><a href="/imagenes?destino=${busqueda.destino}">Imágenes</a></li>			
+			<li><a href="/videos?destino=${busqueda.destino}">Vídeos</a></li>
+			<li><a href="/weather?destino=${busqueda.destino}">Tiempo</a></li>
+			<li><a href="/restaurantes?destino=${busqueda.destino}">Restaurantes</a></li>
+			<li><a href="/editPost.jsp?destino=${busqueda.destino}">Facebook</a></li>
+		</ul>
+
+	</div>
+</nav>
+
 
 <h1>ESTAMOS EN ERROR</h1>
 
-<p> HA OCURRIDO UN ERROR. VUELVA A INTENTARLO MÁS TARDE.</p>
+<p>HA OCURRIDO UN ERROR. VUELVA A INTENTARLO MÁS TARDE.</p>
 
-</body>
-</html>
+<%@include file="includes/footer.jsp"%>

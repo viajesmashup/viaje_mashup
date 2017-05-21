@@ -4,7 +4,7 @@
 
 <nav>
 	    <div class="nav-wrapper">
-	      <a href="#!" class="brand-logo">RESTAURANTES</a>
+	      <a href="/restaurantes?destino=${busqueda.destino}" class="brand-logo">RESTAURANTES</a>
 	      <a href="#" data-activates="mobile-demo" class="button-collapse" ><i class="material-icons">menu</i></a>
 	      <ul class="right hide-on-med-and-down">
 	      <li><a href="/">Inicio </a></li>

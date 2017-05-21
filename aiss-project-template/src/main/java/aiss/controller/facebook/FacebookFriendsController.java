@@ -26,7 +26,7 @@ public class FacebookFriendsController extends HttpServlet {
 			FacebookFriends friends=fbResource.getFriends();
 			if(friends!=null){
 				req.setAttribute("friends", friends);
-				req.getRequestDispatcher("/index.jsp").forward(req,resp);
+				req.getRequestDispatcher("/postCorrecto.jsp").forward(req,resp);
 			}else{
 				log.info("The friends returned are null... probably your token has experied. Redirecting to OAuth servlet.");
 				req.getRequestDispatcher("/AuthController/Facebook").forward(req,resp);
