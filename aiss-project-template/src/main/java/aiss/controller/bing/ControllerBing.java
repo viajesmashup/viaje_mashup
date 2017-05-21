@@ -72,13 +72,16 @@ public class ControllerBing extends HttpServlet {
 		BingResources bing = new BingResources();
 		Photo photoResults = bing.getBingPhotos(destino);
 
-		if (photoResults != null) {
+		if (photoResults != null && photoResults.getValue().size()>0) {
 			request.setAttribute("photos", photoResults);
 			request.setAttribute("busqueda", busqueda);
 
 			rd = request.getRequestDispatcher("/imagenes.jsp");
 
 		} else {
+			request.setAttribute("busqueda", busqueda);
+
+			rd = request.getRequestDispatcher("/errorImagen.jsp");
 			log.log(Level.SEVERE, "Bing object: " + photoResults);
 		}
 		rd.forward(request, response);

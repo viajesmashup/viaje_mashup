@@ -21,10 +21,25 @@
       </ul>
     </div>
   </nav>
+  
+     <div class="preloader-background">
+	<div class="preloader-wrapper big active">
+		<div class="spinner-layer spinner-red-only">
+			<div class="circle-clipper left">
+				<div class="circle"></div>
+			</div>
+			<div class="gap-patch">
+				<div class="circle"></div>
+			</div>
+			<div class="circle-clipper right">
+				<div class="circle"></div>
+			</div>
+		</div>
+	</div>
+</div>
 
-<%@include file="includes/footer.jsp"%>
 
-
+<main>
 
 
 	<c:forEach items="${requestScope.videos}" var="video">
@@ -36,4 +51,5 @@
 		</div>
 		<br>
 	</c:forEach>
-
+</main>
+<%@include file="includes/footer.jsp"%>

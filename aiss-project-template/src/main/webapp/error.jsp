@@ -27,9 +27,11 @@
 	</div>
 </nav>
 
+<main>
 
 <h1>ESTAMOS EN ERROR</h1>
 
 <p>HA OCURRIDO UN ERROR. VUELVA A INTENTARLO MÁS TARDE.</p>
 
+</main>
 <%@include file="includes/footer.jsp"%>

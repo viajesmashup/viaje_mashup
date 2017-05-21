@@ -37,6 +37,14 @@ $(document).ready(function(){
     $('#textarea1').trigger('autoresize');
           
   });
+  
+document.addEventListener("DOMContentLoaded", function(){
+	$('.preloader-background').delay(4700).fadeOut('slow');
+	
+	$('.preloader-wrapper')
+		.delay(4000)
+		.fadeOut();
+});
 
 
 </script>

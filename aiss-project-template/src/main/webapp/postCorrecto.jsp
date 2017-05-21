@@ -1,12 +1,36 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Â¡Su post ha sido enviado!</title>
-</head>
-<body>
+<%@include file="includes/header.jsp"%>
 
-</body>
-</html>
+<nav>
+	<div class="nav-wrapper">
+
+
+		<a href="#!" class="brand-logo">Post Creado</a> <a href="#"
+			data-activates="mobile-demo" class="button-collapse"><i
+			class="material-icons">menu</i></a>
+		<ul class="right hide-on-med-and-down">
+			<li><a href="/">Inicio </a></li>
+			<li><a href="/imagenes?destino=${busqueda.destino}">Imágenes</a></li>
+			<li><a href="/videos?destino=${busqueda.destino}">Vídeos</a></li>
+			<li><a href="/weather?destino=${busqueda.destino}">Tiempo</a></li>
+			<li><a href="/restaurantes?destino=${busqueda.destino}">Restaurantes</a></li>
+			<li><a href="/editPost.jsp?destino=${busqueda.destino}">Facebook</a></li>
+
+		</ul>
+		<ul class="side-nav" id="mobile-demo">
+			<li><a href="/">Inicio </a></li>       
+			 <li><a href="/imagenes?destino=${busqueda.destino}">Imágenes</a></li>			
+			<li><a href="/videos?destino=${busqueda.destino}">Vídeos</a></li>
+			<li><a href="/weather?destino=${busqueda.destino}">Tiempo</a></li>
+			<li><a href="/restaurantes?destino=${busqueda.destino}">Restaurantes</a></li>
+			<li><a href="/editPost.jsp?destino=${busqueda.destino}">Facebook</a></li>
+		</ul>
+
+	</div>
+</nav>
+<main>
+
+<h1>¡El post ha sido enviado correctamente!</h1>
+
+
+</main>
+<%@include file="includes/footer.jsp"%>

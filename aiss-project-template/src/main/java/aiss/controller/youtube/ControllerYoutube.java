@@ -49,16 +49,19 @@ public class ControllerYoutube extends HttpServlet {
 
 		Youtube youtube = youtubeResources.getVideo(destino);
 
-		if (youtube != null) {
+		if (youtube != null && youtube.getItems().size()>0) {
 			request.setAttribute("videos", youtube.getItems());
 			request.setAttribute("busqueda", busqueda);
+			rd = request.getRequestDispatcher("/youtube.jsp");
 		} else {
 			log.log(Level.SEVERE, "youtube object: " + youtube);
+			request.setAttribute("busqueda", busqueda);
+			rd = request.getRequestDispatcher("/errorYoutube.jsp");
 
 		}
 		log.log(Level.FINE, "Se redirije a la vista: ");
 
-		rd = request.getRequestDispatcher("/youtube.jsp");
+		
 
 		rd.forward(request, response);
 

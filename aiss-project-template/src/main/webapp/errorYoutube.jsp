@@ -1,5 +1,5 @@
 <%@include file="includes/header.jsp"%>
-
+<main>
 <nav>
 	<div class="nav-wrapper">
 
@@ -27,8 +27,7 @@
 
 	</div>
 </nav>
-<main>
 <h1>ERROR</h1>
-<p>El restaurante de su destino, aún no está en nuestra base de datos. Estamos trabajando para ello, aún así puede buscar otro destino. Disculpe las molestias. </p>
+<p>Los vídeos de su destino aún no están en nuestra base de datos. Estamos trabajando para ello, aún así puede buscar otro destino. Disculpe las molestias. </p>
 </main>
 <%@include file="includes/footer.jsp"%>

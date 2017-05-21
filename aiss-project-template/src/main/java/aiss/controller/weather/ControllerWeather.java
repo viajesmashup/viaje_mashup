@@ -43,18 +43,25 @@ public class ControllerWeather extends HttpServlet {
 		log.log(Level.FINE, "Buscando el tiempo de la ciudad: " + destino);
 
 		Busqueda busqueda = new Busqueda(destino);
-
 		RequestDispatcher rd = null;
-		WeatherResources weatherResources = new WeatherResources();
-		Weather weather = weatherResources.getWeather(destino);
-		if (weather != null) {
 
-			request.setAttribute("weathers", weather);
+		try {
+
+			WeatherResources weatherResources = new WeatherResources();
+			Weather weather = weatherResources.getWeather(destino);
+			if (weather != null && weather.getList().size() > 0) {
+
+				request.setAttribute("weathers", weather);
+				request.setAttribute("busqueda", busqueda);
+
+				rd = request.getRequestDispatcher("/weather.jsp");
+			}
+
+		} catch (Exception e) {
+
 			request.setAttribute("busqueda", busqueda);
+			rd = request.getRequestDispatcher("/errorWeather.jsp");
 
-			rd = request.getRequestDispatcher("/weather.jsp");
-		} else {
-			log.log(Level.SEVERE, "Weather object: " + weatherResources);
 		}
 		log.log(Level.FINE, "Se redirije a la vista: ");
 		rd.forward(request, response);

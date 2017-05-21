@@ -17,7 +17,7 @@ import aiss.model.bing.Photo;
 
 public class BingResources {
 
-	private static final String BING_API_KEY = "2c211f9c0b684ecba69fe38ace2d2963";
+	private static final String BING_API_KEY = "649fb26520d343e09db3a9079b1c9959";
 	private static final Logger log = Logger.getLogger(BingResources.class.getName());
 
 	@SuppressWarnings("unchecked")
